@@ -2,69 +2,102 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz Văn Học</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#667eea,#764ba2);
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+    background:radial-gradient(circle at top,#1e3c72,#2a5298);
 }
 
 .container{
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    padding:50px;
+    border-radius:30px;
     text-align:center;
-    width:420px;
+    width:520px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.5);
 }
 
 h1{
-    margin-bottom:30px;
-    font-size:28px;
-    color:#333;
+    color:white;
+    font-size:32px;
+    margin-bottom:40px;
+    font-weight:800;
+    text-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:25px;
 }
 
-a{
-    text-decoration:none;
-}
+a{text-decoration:none;}
 
-button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    font-size:16px;
+.btn{
+    position:relative;
+    padding:18px;
+    border-radius:18px;
+    font-size:18px;
     font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
     color:white;
+    border:none;
+    cursor:pointer;
+    overflow:hidden;
+    transition:0.4s;
+    
+    /* Reflection */
+    -webkit-box-reflect: below 6px linear-gradient(transparent, rgba(0,0,0,0.25));
 }
 
-.c1{background:#ff6b6b;}
-.c2{background:#feca57;}
-.c3{background:#48dbfb;}
-.c4{background:#1dd1a1;}
-.c5{background:#5f27cd;}
-.c6{background:#ff9ff3;}
+/* Shine effect */
+.btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0.7),
+        rgba(255,255,255,0.2)
+    );
+    transform:skewX(-25deg);
+    transition:0.5s;
+}
 
-button:hover{
-    transform:scale(1.05);
-    opacity:0.9;
+.btn:hover::before{
+    left:125%;
+}
+
+.btn:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+.c1{background:linear-gradient(135deg,#ff6b6b,#ff9f43);}
+.c2{background:linear-gradient(135deg,#feca57,#ff9ff3);}
+.c3{background:linear-gradient(135deg,#48dbfb,#1dd1a1);}
+.c4{background:linear-gradient(135deg,#5f27cd,#341f97);}
+.c5{background:linear-gradient(135deg,#00d2d3,#54a0ff);}
+
+.footer{
+    margin-top:40px;
+    color:#ccc;
+    font-size:13px;
 }
 </style>
 </head>
@@ -75,12 +108,15 @@ button:hover{
     <h1>🎯 Quiz Văn Học</h1>
 
     <div class="grid">
-        <a href="Cauhoi1.html"><button class="c1">Câu 1</button></a>
-        <a href="Cauhoi2.html"><button class="c2">Câu 2</button></a>
-        <a href="Cauhoi3.html"><button class="c3">Câu 3</button></a>
-        <a href="Cauhoi4.html"><button class="c4">Câu 4</button></a>
-        <a href="Cauhoi5.html"><button class="c5">Câu 5</button></a>
-        <a href="Cauhoi6.html"><button class="c6">Câu 6</button></a>
+        <a href="Cauhoi1.html"><button class="btn c1">Câu 1</button></a>
+        <a href="Cauhoi2.html"><button class="btn c2">Câu 2</button></a>
+        <a href="Cauhoi3.html"><button class="btn c3">Câu 3</button></a>
+        <a href="Cauhoi4.html"><button class="btn c4">Câu 4</button></a>
+        <a href="Cauhoi5.html"><button class="btn c5">Câu 5</button></a>
+    </div>
+
+    <div class="footer">
+        ✨ Shader Reflection Effect ✨
     </div>
 </div>
 
