@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Văn Học</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    text-align:center;
+    width:420px;
+}
+
+h1{
+    margin-bottom:30px;
+    font-size:28px;
+    color:#333;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+a{
+    text-decoration:none;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    color:white;
+}
+
+.c1{background:#ff6b6b;}
+.c2{background:#feca57;}
+.c3{background:#48dbfb;}
+.c4{background:#1dd1a1;}
+.c5{background:#5f27cd;}
+.c6{background:#ff9ff3;}
+
+button:hover{
+    transform:scale(1.05);
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎯 Quiz Văn Học</h1>
+
+    <div class="grid">
+        <a href="cau1.html"><button class="c1">Câu 1</button></a>
+        <a href="cau2.html"><button class="c2">Câu 2</button></a>
+        <a href="cau3.html"><button class="c3">Câu 3</button></a>
+        <a href="cau4.html"><button class="c4">Câu 4</button></a>
+        <a href="cau5.html"><button class="c5">Câu 5</button></a>
+        <a href="cau6.html"><button class="c6">Câu 6</button></a>
+    </div>
+</div>
+
+</body>
+</html>
