@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Mã 4 - Bức tranh thứ tư</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Lora',serif;
+    background:linear-gradient(135deg,#d1fae5,#ecfdf5);
+    padding:30px;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+    background:white;
+    border-radius:16px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.title{
+    text-align:center;
+    font-size:26px;
+    margin-bottom:20px;
+    font-weight:600;
+    color:#065f46;
+}
+
+.section{
+    font-size:18px;
+    margin-bottom:15px;
+    font-weight:600;
+}
+
+.content{
+    display:flex;
+    gap:25px;
+}
+
+.image-box{flex:1;}
+.image-box img{
+    width:100%;
+    border-radius:12px;
+}
+
+.text-box{
+    flex:1;
+    background:#f0fdf4;
+    padding:18px;
+    border-radius:12px;
+    border-left:5px solid #059669;
+}
+
+.note{
+    font-size:13px;
+    color:#555;
+    margin-bottom:6px;
+    font-style:italic;
+}
+
+textarea{
+    width:100%;
+    height:95px;
+    margin-top:8px;
+    padding:8px;
+    border-radius:8px;
+    border:1px solid #86efac;
+    resize:none;
+    font-family:'Lora',serif;
+}
+
+button{
+    margin-top:10px;
+    margin-right:8px;
+    padding:7px 14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.hint-btn{background:#facc15;}
+.check-btn{background:#059669;color:white;}
+
+.hint-box{
+    display:none;
+    background:#fef9c3;
+    padding:8px;
+    border-radius:6px;
+    margin-top:8px;
+}
+
+.answer{
+    display:none;
+    background:#fecaca;
+    padding:8px;
+    border-radius:6px;
+    margin-top:8px;
+    font-style:italic;
+    white-space:pre-line;
+}
+
+.result{margin-top:8px;font-weight:600;}
+.correct{color:green;}
+.wrong{color:red;}
+
+@media(max-width:900px){
+    .content{flex-direction:column;}
+}
+</style>
+</head>
+<audio id="dungSound" src="dung.mp3"></audio>
+<audio id="saiSound" src="sai.mp3"></audio>
+<body>
+
+<div class="container">
+    <div class="title">Phân tích tranh AI đoạn thơ</div>
+    <div class="section">Mã 4: Bức tranh thứ tư</div>
+
+    <div class="content">
+        <div class="image-box">
+            <img src="tranh4.jpg" alt="Bức tranh thứ tư">
+        </div>
+
+        <div class="text-box">
+            <p>Những câu thơ nào khắc họa hình ảnh trong bức tranh?</p>
+
+            <div class="note">
+                (Có thể dùng dấu ngoặc kép " " hoặc dấu nháy ' ' để ghi đáp án chính xác.)
+            </div>
+
+            <textarea id="userAnswer"></textarea>
+
+            <br>
+            <button class="hint-btn" onclick="toggleHint()">Gợi ý</button>
+            <button class="check-btn" onclick="checkAnswer()">Trả lời</button>
+
+            <div class="hint-box" id="hintBox">
+                💡 Bài “Mưa xuân” của Nguyễn Bính (Ngữ văn 9).
+            </div>
+
+            <div class="result" id="result"></div>
+
+            <div class="answer" id="correctAnswer">
+Bữa ấy mưa xuân phơi phới bay
+Hoa xoan lớp lớp rụng vơi đầy
+Hội chèo làng Đặng đi ngang ngõ,
+Mẹ bảo: “Thôn Đoài hát tối nay”
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function normalize(text){
+    return text.toLowerCase()
+               .replace(/\s+/g,' ')
+               .replace(/[“”"'‘’]/g,'')
+               .replace(/:/g,'')
+               .trim();
+}
+
+function toggleHint(){
+    let hint=document.getElementById("hintBox");
+    hint.style.display = hint.style.display==="block" ? "none" : "block";
+}
+
+function checkAnswer(){
+    let correct = normalize(`Bữa ấy mưa xuân phơi phới bay
+Hoa xoan lớp lớp rụng vơi đầy
+Hội chèo làng Đặng đi ngang ngõ,
+Mẹ bảo: “Thôn Đoài hát tối nay”.`);
+
+    let user = normalize(document.getElementById("userAnswer").value);
+    let result = document.getElementById("result");
+
+    if(user === correct){
+        let d=document.getElementById("dungSound");
+d.pause();d.currentTime=0;d.play();
+        result.innerHTML="✅ Chính xác!";
+        result.className="result correct";
+    }else{
+        let s=document.getElementById("saiSound");
+s.pause();s.currentTime=0;s.play();
+        result.innerHTML="❌ Chưa đúng. Xem đáp án bên dưới.";
+        result.className="result wrong";
+        document.getElementById("correctAnswer").style.display="block";
+    }
+}
+</script>
+
+</body>
+</html>
